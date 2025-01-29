@@ -1,5 +1,4 @@
 import React from "react";
-
 import Menu from "./Menu";
 
 const Topbar = () => {
@@ -7,7 +6,7 @@ const Topbar = () => {
     <div className="topbar-container">
       <div className="indices-container">
         <div className="nifty">
-          <p className="index">NIFTY 50</p>
+          <p className="index">NIFTY-50</p>
           <p className="index-points">{100.2} </p>
           <p className="percent"> </p>
         </div>

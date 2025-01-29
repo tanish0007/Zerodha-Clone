@@ -1,14 +1,14 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
 
@@ -291,7 +291,7 @@ code {
 }
 
 hr {
-  border-left: 0.8px solid rgb(243, 242, 242);
+  border-left: 1px solid black;
   height: 30px;
 }
 
@@ -303,13 +303,13 @@ hr {
 }
 
 .profile .avatar {
-  width: 30px;
-  height: 30px;
+  width: 35px;
+  height: 35px;
   text-align: center;
   position: relative;
-  font-size: 0.7rem;
+  font-size: 1rem;
   font-weight: 400;
-  color: rgb(221, 139, 221);
+  color: rgb(230, 17, 230);
   justify-content: center;
   align-items: center;
   border-radius: 100%;
@@ -320,14 +320,14 @@ hr {
 }
 
 .profile .username {
-  font-size: 0.8rem;
+  font-size: 1rem;
   font-weight: 300;
 }
 
 /* sudo selectors */
 
 .menu:hover {
-  color: rgb(245, 104, 52);
+  color: red;
 }
 
 .profile:hover {
@@ -359,7 +359,7 @@ hr {
 
 .no-orders p {
   margin-top: 6%;
-  color: rgb(173, 173, 173);
+  color: rgb(167, 69, 69);
   font-size: 1rem;
   font-weight: 300;
 }
@@ -408,11 +408,11 @@ hr {
 }
 
 .order-table tr td:first-child p {
-    background: rgb(255, 197, 197);
-    color: rgb(233, 120, 120);
-    width: 50%;
-    text-align: center;
-    border-radius: 2px;
+  background: rgb(255, 197, 197);
+  color: rgb(233, 120, 120);
+  width: 50%;
+  text-align: center;
+  border-radius: 2px;
 }
 
 .order-table tr td:last-child {
@@ -571,7 +571,7 @@ hr {
   height: 10vh;
   display: flex;
   align-items: center;
-  box-shadow: 0px 0px 4px 2px rgb(236, 235, 235);
+  box-shadow: 0px 0px 4px 2px rgb(107, 102, 102);
   box-sizing: border-box;
   z-index: 9;
 }
@@ -580,7 +580,7 @@ hr {
   flex-basis: 32%;
   height: 100%;
   padding: 10px 20px;
-  border-right: 1px solid rgb(224, 224, 224);
+  border-right: 2px solid rgb(107, 102, 102);
   box-sizing: border-box;
   display: flex;
   align-items: center;
@@ -592,7 +592,6 @@ hr {
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  z-index: -2;
 }
 
 .sensex {
@@ -602,29 +601,29 @@ hr {
   justify-content: space-evenly;
 }
 
-.nifty > *,
+/* .nifty > *,
 .sensex > * {
-  margin-right: 8px;
-}
+  /* margin-right: 8px; */
+/* }  */
 
 .index {
   font-size: 0.8rem;
   font-weight: 500;
   text-transform: uppercase;
-  color: rgb(97, 97, 97);
+  color: black;
   white-space: nowrap;
 }
 
 .index-points {
   font-size: 0.8rem;
   font-weight: 500;
-  color: rgb(223, 73, 73);
+  color: red;
 }
 
 .percent {
   font-size: 0.8rem;
   font-weight: 400;
-  color: rgb(146, 146, 146);
+  color: black;
 }
 
 /* sudo selectors */
