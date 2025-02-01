@@ -168,6 +168,9 @@ const app = express();
 //     }
 // });
 
+app.use(cors());
+app.use(bodyParser.json());
+
 app.get('/allHold', async(req,res) => {
     let allHoldings = await HoldingsModel.find({});
     res.json(allHoldings);
