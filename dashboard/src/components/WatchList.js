@@ -76,7 +76,7 @@ function WatchListItem({stock}) {
           <span className="percent">{stock.percent}</span>
           {stock.isDown ? (
             <KeyboardArrowDown className='down' />
-          ): <KeyboardArrowUp className='' />}
+          ): <KeyboardArrowUp className='up' />}
           <span className="price">{stock.price}</span>
         </div>
       </div>

@@ -4,7 +4,6 @@
   "description": "",
   "license": "ISC",
   "author": "tanish",
-  "type": "commonjs",
   "main": "index.js",
   "scripts": {
     "start": "nodemon index.js"

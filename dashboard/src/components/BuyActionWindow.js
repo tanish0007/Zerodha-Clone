@@ -19,6 +19,7 @@ const BuyActionWindow = ({ uid }) => {
       mode: "BUY",
     });
     
+    
     GeneralContext.closeBuyWindow();
   };
 
@@ -55,7 +56,7 @@ const BuyActionWindow = ({ uid }) => {
       </div>
 
       <div className="buttons">
-        <span>Margin required ₹140.65</span>
+        <span>Margin required= {stockQuantity * stockPrice}</span>
         <div>
           <Link className="btn btn-blue" onClick={handleBuyClick}>
             Buy

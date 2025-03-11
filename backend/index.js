@@ -182,16 +182,42 @@ app.get('/allPos', async(req,res) => {
     res.json(allPositions);
 })
 
-app.post('/newOrder', async(req,res) => {
-    let newOrder = await OrdersModel({
-        name: req.body.name,
-        qty: req.body.qty,
-        price: req.body.price,
-        mode: req.body.mode
-    });
-    newOrder.save();
-    res.send('Order Saved!');
-})
+// app.post('/newOrder', async(req,res) => {
+//     let newOrder = await OrdersModel({
+//         name: req.body.name,
+//         qty: req.body.qty,
+//         price: req.body.price,
+//         mode: req.body.mode
+//     });
+//     newOrder.save();
+//     res.send('Order Saved!');
+// })
+
+app.post('/newOrder', async (req, res) => {
+    try {
+        const { name, qty, price, mode } = req.body;
+        if (!name || !qty || !price || !mode) {
+            return res.status(400).send("Missing required fields");
+        }
+        const newOrder = new OrdersModel({ name, qty, price, mode });
+        await newOrder.save();
+        res.send('Order Saved!');
+    } catch (error) {
+        console.error("Error saving order:", error);
+        res.status(500).send("Error saving order");
+    }
+});
+
+app.get('/allOrders', async (req, res) => {
+    try {
+        const allOrders = await OrdersModel.find({});
+        res.json(allOrders);
+    } catch (error) {
+        console.error("Error fetching orders:", error);
+        res.status(500).send("Error fetching orders");
+    }
+});
+
 
 app.listen(PORT, ()=>{
     console.log("App started");
