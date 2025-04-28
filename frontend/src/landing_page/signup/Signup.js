@@ -1,6 +1,8 @@
 import React, {useState} from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Signup = () => {
 
@@ -13,6 +15,7 @@ const Signup = () => {
     });
 
     const [error, setError] = useState("");
+    const [loading, setLoading] = useState(false);
 
     // Handle input changes
     const handleInputChange = (e) => {
@@ -32,6 +35,7 @@ const Signup = () => {
         }
 
         try {
+            setLoading(true);
             const response = await axios.post(
                 "http://localhost:3003/auth/signup",
                 formData,
@@ -43,18 +47,27 @@ const Signup = () => {
 
             if (response.data.success) {    
                 localStorage.setItem("token", response.data.token);
-                window.location.href = "http://localhost:3001";
+                toast.success("Signup successful! Redirecting...", {
+                    autoClose: 1000,
+                    pauseOnHover: false,
+                });
+                setTimeout(() => {
+                    window.location.href = "http://localhost:3001";
+                }, 1500);
             } else {
                 setError(response.data.message);
+                setLoading(false);
             }
         } catch (err) {
             console.error("Signup error:", err);
             setError("An error occurred during signup. Please try again.");
+            setLoading(false);
         }
     };
 
     return ( 
         <div className='container border-bottom mt-5'>
+            <ToastContainer position="top-center" />
             <div className='text-center p-3'>  
                 <h1 style={{fontWeight: "500", fontSize:"2.5rem", color: "#424242"}}>Open a free demat and trading account online</h1>
                 <h3 className='text-muted mt-3 fs-5'>Start investing brokerage free and join a community of 1.5+ crore investors and traders</h3>

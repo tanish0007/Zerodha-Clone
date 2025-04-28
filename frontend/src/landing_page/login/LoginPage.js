@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import axios from 'axios'
 import { useNavigate  } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const LoginPage = () => {
@@ -12,6 +14,7 @@ const LoginPage = () => {
         password: "",
     });
     const [error, setError] = useState("");
+    const [loading, setLoading] = useState(false);
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
@@ -28,6 +31,7 @@ const LoginPage = () => {
             return;
         }
         try{
+            setLoading(true);
             const response = await axios.post(
                 "http://localhost:3003/auth/login",
                 formData,
@@ -38,18 +42,27 @@ const LoginPage = () => {
             );
             if (response.data.success){
                 localStorage.setItem("token", response.data.token);
-                window.location.href = "http://localhost:3001";
+                toast.success("Login successful! Redirecting...", {
+                    autoClose: 1000,
+                    pauseOnHover: false,
+                });
+                setTimeout(() => {
+                    window.location.href = "http://localhost:3001";
+                }, 1500);
             }else{
                 setError(response.data.message);
+                setLoading(false);
             }
         }catch(error) {
             console.error("Login error:", error);
             setError("An error occurred during login. Please try again.");
+            setLoading(false);
         }
     };
 
     return(
         <div className='container mt-5 mb-5'>
+            <ToastContainer position="top-center" />
             <div className="row justify-content-center" >
                 <div className="col-6 ">    
                     <div className="card shadow">
