@@ -12,7 +12,7 @@ const BuyActionWindow = ({ uid }) => {
   const [stockPrice, setStockPrice] = useState(0.0);
 
   const handleBuyClick = () => {
-    axios.post("http://localhost:3003/newOrder", {
+    axios.post(`${process.env.REACT_APP_API_URL}/newOrder`, {
       name: uid,
       qty: stockQuantity,
       price: stockPrice,

@@ -8,7 +8,7 @@ const Holdings = () => {
   const [allHoldings, setAllHoldings] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:3003/allHold", {
+    axios.get(`${process.env.REACT_APP_API_URL}/allHold`, {
       timeout: 10000
     })
     .then((res) => {

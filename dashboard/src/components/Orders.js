@@ -7,7 +7,7 @@ function Orders() {
 
   useEffect(() => {
     // Fetch orders from the backend
-    axios.get("http://localhost:3003/allOrders", {
+    axios.get(`${process.env.REACT_APP_API_URL}/allOrders`, {
       timeout: 10000
     })
     .then((res) => {
