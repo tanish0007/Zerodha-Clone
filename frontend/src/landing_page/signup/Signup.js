@@ -37,7 +37,7 @@ const Signup = () => {
         try {
             setLoading(true);
             const response = await axios.post(
-                "http://localhost:3003/auth/signup",
+                `${process.env.REACT_APP_API_URL}/auth/signup`,
                 formData,
                 { 
                     headers: { "Content-Type": "application/json" },
@@ -52,7 +52,7 @@ const Signup = () => {
                     pauseOnHover: false,
                 });
                 setTimeout(() => {
-                    window.location.href = "http://localhost:3001";
+                    window.location.href = process.env.REACT_APP_DASHBOARD_URL;
                 }, 1500);
             } else {
                 setError(response.data.message);
