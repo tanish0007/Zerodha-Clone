@@ -26,7 +26,6 @@ const Signup = () => {
     // Handle form submission
     const handleSubmit = async (e) => {
         e.preventDefault();
-
         if (!formData.email || !formData.password || !formData.username) {
             setError("All fields are required");
             return;
@@ -36,11 +35,15 @@ const Signup = () => {
             const response = await axios.post(
                 "http://localhost:3003/auth/signup",
                 formData,
-                { withCredentials: true }
+                { 
+                    headers: { "Content-Type": "application/json" },
+                    withCredentials: true 
+                }
             );
 
             if (response.data.success) {    
-                navigate("/dashboard");
+                localStorage.setItem("token", response.data.token);
+                window.location.href = "http://localhost:3001";
             } else {
                 setError(response.data.message);
             }

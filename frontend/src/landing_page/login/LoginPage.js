@@ -31,10 +31,14 @@ const LoginPage = () => {
             const response = await axios.post(
                 "http://localhost:3003/auth/login",
                 formData,
-                { withCredentials: true }
+                {
+                    headers: {"Content-Type": "application/json"},
+                    withCredentials: true 
+                }
             );
             if (response.data.success){
-                navigate("/dashboard");
+                localStorage.setItem("token", response.data.token);
+                window.location.href = "http://localhost:3001";
             }else{
                 setError(response.data.message);
             }
