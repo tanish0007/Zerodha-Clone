@@ -20,13 +20,32 @@ const app = express();
 app.use(bodyParser.json());
 
 
-app.use(
-    cors({
-        origin: ["http://localhost:3000", "http://localhost:3001", "http://localhost:3002"],
-        methods: ["GET", "POST"],
-        credentials: true
-    })
-);
+
+const allowedOrigins = process.env.NODE_ENV === 'production'
+  ? [process.env.FRONTEND_URL, process.env.DASHBOARD_URL]
+  : ["http://localhost:3000", "http://localhost:3001", "http://localhost:3002"];
+
+app.use(cors({
+  origin: (origin, callback) => {
+
+    if (!origin) return callback(null, true);
+    
+    if (allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  credentials: true
+}));
+// app.use(
+//     cors({
+//         origin: ["http://localhost:3000", "http://localhost:3001", "http://localhost:3002"],
+//         methods: ["GET", "POST"],
+//         credentials: true
+//     })
+// );
 
 app.use(express.json());
 const authRoute = require('./routes/AuthRoute');
@@ -66,6 +85,7 @@ app.get('/allOrders', async (req, res) => {
         console.error("Error fetching orders:", error);
         res.status(500).send("Error fetching orders");
     }
+    
 });
 
 app.listen(PORT, ()=>{
