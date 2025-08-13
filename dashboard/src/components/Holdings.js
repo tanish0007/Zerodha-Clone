@@ -5,9 +5,11 @@ import { VerticalGraph } from "./VerticalGraph";
 // import {holdings} from '../data/data'
 
 const Holdings = () => {
+  console.log("Holdings component rendered");
   const [allHoldings, setAllHoldings] = useState([]);
 
   useEffect(() => {
+    console.log("Fetching holdings data...");
     axios.get(`${process.env.REACT_APP_API_URL}/allHold`, {
       timeout: 10000
     })
@@ -37,6 +39,8 @@ const Holdings = () => {
       },
     ],
   };
+
+  console.log("It's runned");
 
   return (
     <>
